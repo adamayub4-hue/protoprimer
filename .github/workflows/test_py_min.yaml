@@ -36,6 +36,11 @@ jobs:
 
             -   uses: actions/checkout@v4
 
+            # Fork-only validation: walkthroughs must fetch this reviewed fork branch.
+            -   name: use fork source for documentation walkthroughs
+                run: |
+                    git config --global url."https://github.com/adamayub4-hue/protoprimer.git".insteadOf https://github.com/uvsmtid/protoprimer.git
+
             -   run: |
                     ${{ github.workspace }}/prime -vvv --env dst/test_python_min
                     ${{ github.workspace }}/cmd/prime_env -vvv --env dst/test_python_min
